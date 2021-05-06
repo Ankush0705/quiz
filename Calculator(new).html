@@ -1,0 +1,105 @@
+<html>
+   <head>
+      <link rel="stylesheet" href="styles.css">
+      <script>
+         //function that display value
+         var arr=[];
+         function dis(val)
+         {
+            arr.push(val);
+            
+            console.log(val);
+            document.getElementById("result").value+=val
+         }
+           
+         //function that evaluates the digit and return result
+         function solve()
+         {
+             //let x = document.getElementById("result").value
+             //console.log(x);
+          
+             console.log(arr);
+             var sum=0;
+             for(let i=0;i<arr.length;i++)
+             {
+                
+                switch(arr[i])
+                {
+                   case '+':
+                     sum+=parseInt(arr[i-1])+parseInt(arr[i+1]);
+                     break;
+                  case '-':
+                     sum+=parseInt(arr[i-1])-parseInt(arr[i+1]);
+                     break;  
+                  case '*':
+                     sum+=parseInt(arr[i-1])*parseInt(arr[i+1]);
+                     break;
+                  case '/':
+                     sum+=parseInt(arr[i-1])/parseInt(arr[i+1]);
+                     break;
+                }
+             }
+            
+             arr=[];
+             arr[0]=sum;
+             //let y = eval(x)
+             //let arr=[];
+             //var sum=0;
+             //for(let i=0;i<x.length;i++)
+             //{
+               //if(x[i]==='+')
+               // {
+                  
+               // }
+               // arr.push(parseInt(x[i]));
+            // }
+             document.getElementById("result").value = sum
+         }
+           
+         //function that clear the display
+         function clr()
+         {
+            sum=0;
+            arr=[];
+            document.getElementById("result").value = 0;
+             document.getElementById("result").value = ""
+         }
+      </script>
+   </head>
+   <body>
+   
+      <table style="width:50%">
+         <tr>
+            <td colspan="4"><input type="text" id="result"/></td>
+         </tr>
+         <tr>
+            <td><input type="button" value="*" onclick="dis('*')"/> </td>
+            <td><input type="button" value="/" onclick="dis('/')"/> </td>
+            <td><input type="button" value="-" onclick="dis('-')"/> </td>
+            <td><input type="button" value="+" onclick="dis('+')"/> </td>
+         </tr>
+         <tr>
+            <td class="btn-group btn-clear"><button onclick="clr()"><b>C</b></button></td>
+            <!-- <td><input type="button" value="." onclick="dis('.')"/> </td> -->
+            <td><input type="button" value="9" onclick="dis('9')"/> </td>
+            <td><input type="button" value="8" onclick="dis('8')"/> </td>
+            <td><input type="button" value="7" onclick="dis('7')"/> </td>
+         </tr>
+         <tr>
+            <td><input type="button" value="6" onclick="dis('6')"/> </td>
+            <td><input type="button" value="5" onclick="dis('5')"/> </td>
+            <td><input type="button" value="4" onclick="dis('4')"/> </td>
+            <td><input type="button" value="3" onclick="dis('3')"/> </td>
+         </tr>
+         <tr>
+            <td><input type="button" value="2" onclick="dis('2')"/> </td>
+            <td><input type="button" value="1" onclick="dis('1')"/> </td>
+            <td><input type="button" value="0" onclick="dis('0')"/> </td>
+            <td class="btn-group btn-equal"><button onclick="solve()"><b>=</b></button></td>
+         </tr>
+         <!-- <tr>
+            <td class="btn-group btn-clear"><button onclick="clr()"><b>C</b></button></td>
+         </tr> -->
+      </table>
+   </body>
+</html>   
